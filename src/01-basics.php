@@ -12,6 +12,26 @@
  */
 function getMinuteQuarter(int $minute)
 {
+    if ($minute > 59 || $minute < 0) {
+        throw new InvalidArgumentException('Invalid');
+    }
+    if ($minute === 0) {
+        return 'fourth';
+    }
+    switch ($minute) {
+        case $minute > 45 :
+            return 'fourth';
+            break;
+        case $minute > 30 && $minute <= 45 :
+            return 'third';
+            break;
+        case $minute > 15 && $minute <= 30 :
+            return 'second';
+            break;
+        case $minute <= 15 :
+            return 'first';
+            break;
+    }
 }
 
 /**
@@ -27,6 +47,13 @@ function getMinuteQuarter(int $minute)
  */
 function isLeapYear(int $year)
 {
+    if (!is_int($year) || $year < 1900) {
+        throw new InvalidArgumentException();
+    }
+    if ($year % 2 === 0) {
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -42,4 +69,14 @@ function isLeapYear(int $year)
  */
 function isSumEqual(string $input)
 {
+    if (strlen($input) !== 6) {
+        throw new InvalidArgumentException();
+    }
+    $firstSumPart = $input[0] + $input[1] + $input[2]; // Мне кажется работа с примитивами наиболее быстрая:-)
+    $secondSumPart = $input[3] + $input[4] + $input[5];
+
+    if ($firstSumPart === $secondSumPart) {
+        return true;
+    }
+    return false;
 }
