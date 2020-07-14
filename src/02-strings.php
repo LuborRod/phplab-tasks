@@ -47,11 +47,11 @@ function mirrorMultibyteString(string $input)
  */
 function getBrandName(string $noun)
 {
-    $firstSymbol = substr($noun, 0,1);
-    $lastSymbol = substr($noun, -1,1);
+    $firstSymbol = substr($noun, 0, 1);
+    $lastSymbol = substr($noun, -1, 1);
 
     if ($firstSymbol == $lastSymbol) {
-        return ucfirst($noun . substr($noun,1));
+        return ucfirst($noun . substr($noun, 1));
     }
     return 'The ' . ucfirst($noun);
 }
