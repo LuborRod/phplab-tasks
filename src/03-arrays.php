@@ -74,18 +74,16 @@ function getUniqueValue(array $input)
 function groupByTag(array $input)
 {
     $grouped = [];
-    // I did this, because I think that test has a mistake. There has to be another order of values.
-    if (!in_array(['name' => 'potato', 'tags' => ['vegetable', 'yellow']], $input)) {
-        $input = array_reverse($input);
-    }
-    ///////////////////////////////////////////////////////
+
     foreach ($input as $item) {
 
         $tags = $item['tags'];
         foreach ($tags as $tag) {
             $grouped[$tag][] = $item['name'];
         }
-        sort($grouped[$tag]);
+    }
+    foreach ($grouped as &$input) {
+        sort($input);
     }
     ksort($grouped);
 
