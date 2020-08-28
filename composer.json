@@ -12,7 +12,8 @@
         }
     },
     "require": {
-        "php": "^7.3",
-        "phpunit/phpunit": "^9.2"
+        "php": "^7.4",
+        "phpunit/phpunit": "^9.2",
+      "ext-http": "*"
     }
 }
